@@ -20,13 +20,12 @@ Code for the paper [Optimal Neural Program Synthesis from Multimodal Specificati
 * JAVA 1.8.0
 
 ## Code
-We've already attached trained checkpoint at `checkpoints/streg/streg.src100.field100.bin`.
+We've already attached trained checkpoint at `checkpoints/streg/streg.enc.src100.field100.bin`.
 
 **Preprocess data**
 
 ```
 python -c 'from datasets.streg.make_dataset import make_dataset;make_dataset()'
-
 ```
 
 **Run Optimal Synthesis**
@@ -34,7 +33,6 @@ python -c 'from datasets.streg.make_dataset import make_dataset;make_dataset()'
 ```
 # <split>: the split (dev,testi, or teste) to evaluate on.
 sh scripts/streg/synth.sh checkpoints/streg/streg.src100.field100.bin <split>
-
 ```
 
 **Train a Model**
