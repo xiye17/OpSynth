@@ -69,7 +69,7 @@ def init_backend():
         stdout=subprocess.PIPE,
         stderr=subprocess.PIPE,
     )
-
+    print('Initializing Backends')
     DatagenBackend.stdin = io.TextIOWrapper(DatagenBackend.proc.stdin,line_buffering=True)
     DatagenBackend.stdout = io.TextIOWrapper(DatagenBackend.proc.stdout)
     DatagenBackend.stderr = io.TextIOWrapper(DatagenBackend.proc.stderr)
@@ -360,9 +360,9 @@ def _preverify_regex_with_exs(streg_ast, example):
         # print('Read error', err.rstrip())
     except Exception as e:
         print('Exception found')
-        # err = DatagenBackend.stderr.read()
+        err = DatagenBackend.stderr.read()
         # print(err)
-        print(e)
+        # print(e)
         raise e
 
     # stderr=subprocess.DEVNULL    

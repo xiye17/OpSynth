@@ -128,3 +128,9 @@ dmypy.json
 # Pyre type checker
 .pyre/
 !external/lib
+
+data/streg/*.bin
+outputs/*.txt
+outputs/*.pkl
+
+misc/*.pkl

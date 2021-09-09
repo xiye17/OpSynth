@@ -1,7 +1,5 @@
-import sys
-sys.path.append('.')
 from os.path import join
-# import sys
+import sys
 import numpy as np
 import pickle
 from grammar.grammar import Grammar
