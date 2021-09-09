@@ -16,6 +16,8 @@ report_file="outputs/synth.report.${model_name}.${split}.${order}.txt"
 eval_file="outputs/synth.eval.${model_name}.${split}.${order}.pkl"
 cache_file="misc/cache.pkl"
 
+mkdir -p logs
+
 python -u synthesize.py \
     --test_file ${test_file} \
     --model_file $1 \

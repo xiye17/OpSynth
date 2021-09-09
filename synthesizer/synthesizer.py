@@ -183,7 +183,7 @@ class EnumSynthesizer:
                 for c in continuations:
                     worklist.push(c)
         time_used = timer.time()
-        print(len(result), 'budget used', num_exec_steps, 'actual check', num_actual_check, 'enum prog', num_enumerated_progs, 'time', time_used)
+        # print(len(result), 'budget used', num_exec_steps, 'actual check', num_actual_check, 'enum prog', num_enumerated_progs, 'time', time_used)
         # consolidate_tree(explored_nodes[0])
         return result, num_exec_steps, explored_nodes, time_used
 
@@ -262,7 +262,7 @@ class NoPruneSynthesizer(EnumSynthesizer):
                 for c in continuations:
                     worklist.push(c)
         time_used = timer.time()
-        print(len(result), 'budget used', num_exec_steps, 'actual check', num_actual_check, 'enum prog', num_enumerated_progs, 'time', time_used)
+        # print(len(result), 'budget used', num_exec_steps, 'actual check', num_actual_check, 'enum prog', num_enumerated_progs, 'time', time_used)
         consolidate_tree(explored_nodes[0])        
         return result, num_exec_steps, explored_nodes, time_used
 

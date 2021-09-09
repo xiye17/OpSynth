@@ -26,6 +26,7 @@ model_file=model.streg.enc${enc_hidden_size}.src${src_emb_size}.field${field_emb
 # echo "**** Writing results to logs/regex/${model_name}.log ****"
 # mkdir -p logs/regex
 # echo commit hash: `git rev-parse HEAD` > logs/regex/${model_name}.log
+mkdir -p logs
 
 python -u train.py \
     --asdl_file ${asdl_file} \

@@ -13,6 +13,8 @@ report_file="outputs/streg.report.${model_name}.${split}.${order}.txt"
 eval_file="outputs/streg.eval.${model_name}.${split}.${order}.pkl"
 cache_file="misc/cache.pkl"
 
+mkdir -p logs
+
 python -u test.py \
     --test_file ${test_file} \
     --model_file $1 \
