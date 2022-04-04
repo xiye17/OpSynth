@@ -42,6 +42,19 @@ If you'd like to train a new ASN model, run the following command. The checkpoin
 sh scripts/streg/train.sh
 ```
 
+**Run RobustFill**
+
+```
+python -c 'from datasets.streg.make_deepcoder_data import make_exs_vocab;make_exs_vocab()'
+
+sh scripts/streg/test_fill.sh checkpoints/streg/streg.robustfill.ioenc100.src100.field100.bin teste
+```
+
+**Train RobustFill**
+
+```
+sh scripts/streg/train_fill.sh
+```
 
 ## Credit
 Part of the codes and system design are modified from [TranX](https://github.com/pcyin/tranX).

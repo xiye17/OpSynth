@@ -67,7 +67,9 @@ def _add_train_args(parser):
     parser.add_argument('--max_decode_step', type=int, help='maximum decode step')
     parser.add_argument('--save_all', default=False, action='store_true', help='Save all intermediate checkpoints')
 
-def _add_train_dc_args(parser):
+    parser.add_argument('--model_name', type=str, default='ASNParser', help='name of model')
+
+def _add_train_fill_args(parser):
     parser.add_argument('--asdl_file', type=str, help='Path to ASDL grammar specification')
     parser.add_argument('--vocab', type=str, help='Path of the serialized vocabulary')
     parser.add_argument('--io_vocab', type=str, help='Path of the serialized vocabulary')
@@ -77,6 +79,8 @@ def _add_train_dc_args(parser):
 
     parser.add_argument('--io_hid_size', type=int, help='encoder hidden size')
     parser.add_argument('--io_emb_size', type=int, help='sentence embedding size')
+    parser.add_argument('--enc_hid_size', type=int, help='encoder hidden size')
+    parser.add_argument('--field_emb_size', type=int, help='field embedding size')
     parser.add_argument('--dropout', type=float, default=0.3, help='dropout rate')
     parser.add_argument('--io_pooling', type=str, default='max', help='pooling over io')
     parser.add_argument('--batch_size', type=int, help='batch size')
@@ -87,7 +91,10 @@ def _add_train_dc_args(parser):
 
     parser.add_argument('--log_every', type=int, help='log every iter')
     parser.add_argument('--run_val_after', type=int, help='run validation after')
+    parser.add_argument('--max_decode_step', type=int, help='maximum decode step')
     parser.add_argument('--save_all', default=False, action='store_true', help='Save all intermediate checkpoints')
+
+    parser.add_argument('--model_name', type=str, default='RobustFill', help='name of model')
 
 def _add_train_mul_args(parser):
     _add_train_args(parser)
@@ -120,8 +127,8 @@ def parse_args(mode):
 
     if mode == 'train':
         _add_train_args(parser)
-    elif mode == 'train_dc':
-        _add_train_dc_args(parser)
+    elif mode == 'train_fill':
+        _add_train_fill_args(parser)
     elif mode == 'train_mul':
         _add_train_mul_args(parser)
     elif mode == 'train_joint':

@@ -267,7 +267,7 @@ class RobustFill(nn.Module):
                 break
         print('Final Num', num_executed)
         completed_hyps.sort(key=lambda x: x.score, reverse=True)
-        return completed_hyps
+        return completed_hyps, num_executed
 
     def parse(self, ex):    
         batch = Batch([ex], self.grammar, self.vocab)
@@ -347,8 +347,9 @@ class RobustFill(nn.Module):
 
     # for synthesizing
     def initialize_hyp_for_synthesizing(self, ex):
-        batch = Batch([ex], self.grammar, self.vocab, train=False)        
-        context_vecs, encoder_outputs = self.encode(batch)
+        batch = Batch([ex], self.grammar, self.vocab, train=False)
+        io_batch = CIOBatch([ex], self.grammar, self.vocab, self.io_vocab, train=False)
+        context_vecs, encoder_outputs = self.encode_io(io_batch)
         init_state = encoder_outputs
         init_hyp = Hypothesis.init_hypothesis(self.grammar.root_type, init_state, order=self.args.search_order)
         self.precompute_scores_for_holes(init_hyp, context_vecs, batch.sent_masks)

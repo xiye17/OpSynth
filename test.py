@@ -7,6 +7,8 @@ from common.utils import *
 
 # from grammar.streg.streg_transition_system import 
 from models.ASN import ASNParser
+from models.RobustFill import RobustFill
+
 from models import nn_utils
 
 from torch import optim
@@ -92,7 +94,16 @@ def batch_filtering_test(gt, preds, meta, flag_force=False):
 
 def test(args):
     test_set = Dataset.from_bin_file(args.test_file)
-    parser = ASNParser.load(args.model_file, ex_args=args) 
+    [x.tokenize_exs() for x in test_set]
+    test_set.examples = test_set.examples
+
+    if args.model_name == 'ASNParser':
+        parser = ASNParser.load(args.model_file, ex_args=args)
+    elif args.model_name == 'RobustFill':
+        parser = RobustFill.load(args.model_file, ex_args=args)
+    else:
+        raise RuntimeError('Unsupported Model Type')
+
     parser.eval()
 
     if (not args.do_naive) and (not args.do_filter):
